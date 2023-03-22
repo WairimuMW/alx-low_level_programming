@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "3-calc.h"
+
+/**
+ * main - performs operation on two integers
+ * @argc: argument counter
+ * @argv: argument vector
+ *
+ * Return: result of operation
+ */
+int main(int argc, char *argv[])
+{
+	int num1, num2;
+	int (*f)(int, int);
+
+	/* validate input */
+	if(argc != 4)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+
+	/* convert user input to integers and point to operator function */
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[3]);
+	f = get_op_func(argv[2]);
+
+	/* validate operator function */
+	if(f == NULL || (argv[2][1] != '\0'))
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	/* check for division by 0 */
+	if((argv[2][0] == '/' || argv[2][0] == '%') && (argv[3][0] == '0'))
+	{
+		printf("Error\n");
+		exit(100);
+	}
+
+	printf("%d\n", f(num1, num2));
+	return (0);
+}
