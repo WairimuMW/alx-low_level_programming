@@ -1,4 +1,4 @@
-#### Singly Lists
+#### Singly Linked Lists
 * 0-print_listint.c: Function that prints all the elements of a linked list.
 * 1-listint_len.c: Function that returns the number of elements in a linked list.
 * 2-add_nodeint.c: Function that adds a new node at the beginning of a linked list.
